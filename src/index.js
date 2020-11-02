@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const Hello = (props) => {
+import Header from './components/Header'
+import Users from './components/Users'
+/*const Hello = (props) => {
   //const now = new Date()
   //const a = 10
   //const b = 20
@@ -18,21 +19,44 @@ const Footer = () => {
     </div>
 
   )
-}
+}*/
 const App = () => {
-  const name = 'Jahid'
-  const age = 10
+  const course ='Mange'
+  // const part1= 'Fundamentals of React'
+  // const exercises1 = 10
+  // const part2='Using pros to pass data'
+  // const exercises2=7
+  // const part3='State of a component'
+  // const exercises3= 14
+  const users = ["Jahid MAnge", "Kanke", "Mage"]
+  const listItems = users.map((user) =>
+  <li><Users user={user}/></li>
+);
   return (
-    <>
-      <h1>Greetings</h1>
-      
-      <Hello name ={name} age={age} />
-      <Hello name = 'Alam' age={26+10}/>
-      <Footer />
-      </>
+    /*<div>
+      <h1>{course}</h1>
+  <p>{part1} {exercises1}</p>
+  <p>{part2} {exercises2}</p>
+  <p>{part3} {exercises3}</p>
+  <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+
+      </div>
     
   )
+}*/
+
+
+<div>
+  <Header course = {course}/>
+  {listItems}
+  {/* <Content Parts={part1,part2,part3}/>
+  <Total Number of exercises ={exercises1+exercises2+exercises3} /> */}
+</div>
+  )
 }
+
+
+
 
 ReactDOM.render(< App />, document.getElementById('root'))
 
