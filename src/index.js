@@ -97,7 +97,7 @@ const Content(props) {
   <Total Number of exercises ={exercises1+exercises2+exercises3} /> }
 </div>
   )
-  */
+  
 const Hello = ({name, age}) =>{
 
 const bornYear = () => 
@@ -114,23 +114,42 @@ return (
 </div>
 )
 }
-const App = () =>{
-  const name = "Jahid"
-  const age = 24
+*/
+const App = (props) =>{
+  const{counter}=props
+
+  //const name = "Jahid"
+ // const age = 24
 return(
   <div>
+    {counter}
+  </div>
+  /*<div>
     <h1>GREETINGS</h1>
     <Hello name="choco" age={26+16}/>
     <Hello name={name} age={age}/>
 
-  </div>
+  </div>*/
+
 )
 }
 
+let counter = 1
+const refresh = () => {
+ReactDOM.render(<App counter={counter}/>, document.getElementById('root'))
+}
+/*
+refresh()
+counter +=1
+refresh()
+counter +=1
+refresh()
+*/
 
-
-
-ReactDOM.render(<App />, document.getElementById('root'))
+setInterval(() => {
+  refresh()
+  counter += 1
+}, 1000)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
