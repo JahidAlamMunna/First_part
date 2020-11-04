@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/Header'
-import Users from './components/Users'
-/*const Hello = (props) => {
+
   //const now = new Date()
   //const a = 10
   //const b = 20
-return (
+/*return (
   <div>
     <p>Hello {props.name},you are {props.age} years old</p>
   </div>
@@ -19,46 +17,120 @@ const Footer = () => {
     </div>
 
   )
-}*/
-const App = () => {
-  const course ='Mange'
-  // const part1= 'Fundamentals of React'
-  // const exercises1 = 10
-  // const part2='Using pros to pass data'
-  // const exercises2=7
-  // const part3='State of a component'
-  // const exercises3= 14
-  const users = ["Jahid MAnge", "Kanke", "Mage"]
-  const listItems = users.map((user) =>
-  <li><Users user={user}/></li>
+}
+const Header = ({course}) =>{
+  
+return (
+<h1>{course}</h1>
 );
+};
+const Part = ({part}) => {
   return (
-    /*<div>
-      <h1>{course}</h1>
-  <p>{part1} {exercises1}</p>
-  <p>{part2} {exercises2}</p>
-  <p>{part3} {exercises3}</p>
-  <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <p>
+          {part.name} {part.exercises}
+      </p>
+  );
+};
+const Content=({parts})=> {
+  return (
+    <div>
+      <Part part={parts[0]} />
+      <Part part={parts[1]} />
+      <Part part={parts[2]} />
 
-      </div>
+    </div>
+  );
+};
+const Total = ({parts}) => {
+  return (
+<p>Number of exercises {parts[0].exercises + parts[1].exercises + parts[2].exercises}</p>
+  
+);
+  };
+
+const App = () => {
+  const course = {
+    name:'Half Stack application development',
+   parts :[
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using pros to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+    //const users = ["Jahid MAnge", "Kanke", "Mage"]
+    //const listItems = users.map((user) =>
+    //<li><Users user={user}/></li>
+  ]
+  
+};
+  return (
+    <div>
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     
-  )
+    </div>
+
+  );
+};
+const header = (props) =>{
+  console.log(props)
+return <h1>{props.course}</h1>
+}
+const Content(props) {
+  console.log(props)
+  return <h1>{props.parts}</h1>
 }*/
+  
 
-
-<div>
+/*<div>
   <Header course = {course}/>
   {listItems}
-  {/* <Content Parts={part1,part2,part3}/>
-  <Total Number of exercises ={exercises1+exercises2+exercises3} /> */}
+  { <Content Parts={part1,part2,part3}/>
+  <Total Number of exercises ={exercises1+exercises2+exercises3} /> }
 </div>
   )
+  */
+const Hello = ({name, age}) =>{
+
+const bornYear = () => 
+  new Date().getFullYear() -age
+//return yearNow-props.age
+
+return (
+//<div><p>Hello {props.name},you are {props.age}years old</p></div>
+<div>
+  <p>
+    Hello {name},you are {age}years old
+  </p>
+  <p>So probably you are born in{bornYear()}</p>
+</div>
+)
+}
+const App = () =>{
+  const name = "Jahid"
+  const age = 24
+return(
+  <div>
+    <h1>GREETINGS</h1>
+    <Hello name="choco" age={26+16}/>
+    <Hello name={name} age={age}/>
+
+  </div>
+)
 }
 
 
 
 
-ReactDOM.render(< App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
